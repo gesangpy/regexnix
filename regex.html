@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <title></title>
+</head>
+<body>
+    <form id="myform" action="hal_keldua.html">
+        
+        <label>NIK</label>
+        <input type="text" name="nik" pattern="^(1[1-9]|21|[37][1-6]|5[1-3]|6[1-5]|[89][12])\d{2}\d{2}([04][1-9]|[1256][0-9]|[37][01])(0[1-9]|1[0-2])\d{2}\d{4}$">
+        <p id="invalid-nik-ktp" style="display:none;color:red">NIK kurang dari 16 digit</p>
+        <p id="invalid-nik" style="display:none;color:red">sesuaikan dengan identitas ktp</p>
+        <br>
+
+        <input type="submit" value="simpan" />
+
+    </form>
+</body>
+<script>
+
+    // contoh nik valid = 3519151411000452
+    // contoh nik tdk valid = 351915141100045 (kurang dari 16 digit)
+    
+    const nikField =  document.querySelector("[name=nik]");
+
+    // sebelum
+    nikField.addEventListener("keyup", (event) => {
+        if(!nikField.validity.valid){
+            console.error("nik ivalid");
+            document.getElementById("invalid-nik").style.display = "block";
+        }else{
+            console.info("nik valid");
+            document.getElementById("invalid-nik").style.display = "none";   
+        } 
+    });
+    
+    // sesudah 
+    /* nikField.addEventListener("keyup", (event) => {
+       if(length < 16){
+            console.error("nik kurang dari 16");
+            document.getElementById("invalid-nik").style.display = "block";
+            
+        }else if(!nikField.validity.valid){
+            console.error("nik ivalid");
+            document.getElementById("invalid-nik-ktp").style.display = "block";
+            
+        }else{
+            console.info("nik valid");
+            document.getElementById("invalid-nik").style.display = "none";
+        }
+    }); */
+</script>
+</html>
